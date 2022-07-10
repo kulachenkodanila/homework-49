@@ -1,0 +1,140 @@
+[
+{
+    "model": "webapp.status",
+    "pk": 1,
+    "fields": {
+        "created_at": "2022-07-10T22:42:29.948Z",
+        "updated_at": "2022-07-10T22:42:29.948Z",
+        "status": "New"
+    }
+},
+{
+    "model": "webapp.status",
+    "pk": 2,
+    "fields": {
+        "created_at": "2022-07-10T22:42:47.063Z",
+        "updated_at": "2022-07-10T22:42:47.063Z",
+        "status": "In Progress"
+    }
+},
+{
+    "model": "webapp.status",
+    "pk": 3,
+    "fields": {
+        "created_at": "2022-07-10T22:42:55.581Z",
+        "updated_at": "2022-07-10T22:42:55.581Z",
+        "status": "Done"
+    }
+},
+{
+    "model": "webapp.type",
+    "pk": 1,
+    "fields": {
+        "created_at": "2022-07-10T22:43:08.648Z",
+        "updated_at": "2022-07-10T22:43:08.648Z",
+        "type": "Task"
+    }
+},
+{
+    "model": "webapp.type",
+    "pk": 2,
+    "fields": {
+        "created_at": "2022-07-10T22:43:16.268Z",
+        "updated_at": "2022-07-10T22:43:16.268Z",
+        "type": "Bug"
+    }
+},
+{
+    "model": "webapp.type",
+    "pk": 3,
+    "fields": {
+        "created_at": "2022-07-10T22:43:35.658Z",
+        "updated_at": "2022-07-10T22:43:35.658Z",
+        "type": "Enhancement"
+    }
+},
+{
+    "model": "webapp.work",
+    "pk": 1,
+    "fields": {
+        "created_at": "2022-07-10T22:52:04.688Z",
+        "updated_at": "2022-07-10T22:52:04.688Z",
+        "summary": "Задача 1",
+        "description": "Задача 1",
+        "status": 1,
+        "type": 1
+    }
+},
+{
+    "model": "webapp.work",
+    "pk": 2,
+    "fields": {
+        "created_at": "2022-07-10T22:52:26.057Z",
+        "updated_at": "2022-07-10T22:52:26.057Z",
+        "summary": "Задача 2",
+        "description": "Задача 2",
+        "status": 2,
+        "type": 2
+    }
+},
+{
+    "model": "webapp.work",
+    "pk": 3,
+    "fields": {
+        "created_at": "2022-07-10T22:52:39.010Z",
+        "updated_at": "2022-07-10T22:52:39.010Z",
+        "summary": "Задача 3",
+        "description": "Задача 3",
+        "status": 3,
+        "type": 1
+    }
+},
+{
+    "model": "webapp.work",
+    "pk": 4,
+    "fields": {
+        "created_at": "2022-07-10T22:53:07.470Z",
+        "updated_at": "2022-07-10T22:53:07.470Z",
+        "summary": "Задача 4",
+        "description": "Задача 4",
+        "status": 2,
+        "type": 2
+    }
+},
+{
+    "model": "webapp.work",
+    "pk": 5,
+    "fields": {
+        "created_at": "2022-07-10T22:53:19.836Z",
+        "updated_at": "2022-07-10T22:53:19.837Z",
+        "summary": "Задача 5",
+        "description": "Задача 5",
+        "status": 3,
+        "type": 3
+    }
+},
+{
+    "model": "webapp.work",
+    "pk": 6,
+    "fields": {
+        "created_at": "2022-07-10T22:53:32.018Z",
+        "updated_at": "2022-07-10T22:53:32.018Z",
+        "summary": "Задача 6",
+        "description": "Задача 6",
+        "status": 2,
+        "type": 1
+    }
+},
+{
+    "model": "webapp.work",
+    "pk": 7,
+    "fields": {
+        "created_at": "2022-07-10T22:53:44.732Z",
+        "updated_at": "2022-07-10T22:53:44.732Z",
+        "summary": "Задача 7",
+        "description": "Задача 7",
+        "status": 1,
+        "type": 2
+    }
+}
+]
