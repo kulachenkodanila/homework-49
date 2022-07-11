@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{ work.summary }}</h5>
-                        <a href="#" class="card-link">Подробнее</a>
+                        <a href="{% url "work_view" work.pk %}" class="card-link">Подробнее</a>
                     </div>
                 </div>
             </div>

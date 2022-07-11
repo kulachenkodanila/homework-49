@@ -13,7 +13,7 @@ class Status(BaseModel):
     status = models.CharField(max_length=100, null=True, blank=True, verbose_name="Статус")
 
     def __str__(self):
-        return f"{self.pk} - {self.status}"
+        return f"{self.status}"
 
     class Meta:
         db_table = "statuses"
@@ -25,7 +25,7 @@ class Type(BaseModel):
     type = models.CharField(max_length=100, null=True, blank=True, verbose_name="Тип")
 
     def __str__(self):
-        return f"{self.pk} - {self.type}"
+        return f"{self.type}"
 
     class Meta:
         db_table = "types"
