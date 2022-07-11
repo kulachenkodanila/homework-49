@@ -38,7 +38,7 @@ class Work(BaseModel):
     description = models.TextField(max_length=100, null=True, blank=True, verbose_name="Описание")
     status = models.ForeignKey("webapp.Status", on_delete=models.CASCADE, related_name="Statuses",
                                verbose_name="Статус")
-    type = models.ForeignKey("webapp.Type", on_delete=models.CASCADE, related_name="Types", verbose_name="Тип")
+    types = models.ManyToManyField("webapp.Type", related_name="works", blank=True)
 
     def __str__(self):
         return f"{self.pk}. {self.description} - {self.status} - {self.summary} - {self.type}"
