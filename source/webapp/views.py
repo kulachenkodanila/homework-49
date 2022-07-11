@@ -71,3 +71,19 @@ class CreateWork(View):
             new_work = Work.objects.create(summary=summary, description=description, status=status, type=type)
             return redirect("work_view", pk=new_work.pk)
         return render(request, "create.html", {"form": form})
+
+
+class DeleteWork(View):
+
+    def dispatch(self, request, *args, **kwargs):
+        pk = kwargs.get("pk")
+        self.work = get_object_or_404(Work, pk=pk)
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        if request.method == "GET":
+            return render(request, "delete.html", {"work": self.work})
+
+    def post(self, request, *args, **kwargs):
+        self.work.delete()
+        return redirect("index")

@@ -42,7 +42,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <form action="#" method="post">
+                    <form action="{% url "delete_work" work.pk %}" method="post">
                         {% csrf_token %}
                         <button type="submit">Да</button>
                     </form>
