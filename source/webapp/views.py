@@ -39,7 +39,7 @@ class UpdateWork(View):
                 "summary": self.work.summary,
                 "description": self.work.description,
                 "status": self.work.status,
-                "type": self.work.type
+                "types":self.work.types.all
             })
             return render(request, "update.html", {"form": form})
 
@@ -49,7 +49,7 @@ class UpdateWork(View):
             self.work.summary = form.cleaned_data.get("summary")
             self.work.description = form.cleaned_data.get("description")
             self.work.status = form.cleaned_data.get("status")
-            self.work.type = form.cleaned_data.get("type")
+            self.work.types.all = form.cleaned_data.get("types")
             self.work.save()
             return redirect("work_view", pk=self.work.pk)
         return render(request, "update.html", {"form": form})
@@ -67,8 +67,9 @@ class CreateWork(View):
             summary = form.cleaned_data.get("summary")
             description = form.cleaned_data.get("description")
             status = form.cleaned_data.get("status")
-            type = form.cleaned_data.get("type")
-            new_work = Work.objects.create(summary=summary, description=description, status=status, type=type)
+            types = form.cleaned_data.get("types")
+            new_work = Work.objects.create(summary=summary, description=description, status=status)
+            new_work.types.set(types)
             return redirect("work_view", pk=new_work.pk)
         return render(request, "create.html", {"form": form})
 
