@@ -15,4 +15,5 @@ admin.site.register(Work, WorkAdmin),
 admin.site.register(Type)
 admin.site.register(Status)
 
+
 # Register your models here.

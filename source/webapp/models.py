@@ -41,7 +41,7 @@ class Work(BaseModel):
     types = models.ManyToManyField("webapp.Type", related_name="works", blank=True)
 
     def __str__(self):
-        return f"{self.pk}. {self.description} - {self.status} - {self.summary} - {self.type}"
+        return f"{self.pk}. {self.description} - {self.status} - {self.summary} - {self.types}"
 
     class Meta:
         db_table = "works"
