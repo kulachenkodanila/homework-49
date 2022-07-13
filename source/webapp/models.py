@@ -35,7 +35,7 @@ class Type(BaseModel):
 
 class Work(BaseModel):
     summary = models.CharField(max_length=100, null=False, blank=False, verbose_name="Заголовок")
-    description = models.TextField(max_length=100, null=True, blank=True, verbose_name="Описание")
+    description = models.TextField(max_length=100, blank=True, verbose_name="Описание")
     status = models.ForeignKey("webapp.Status", on_delete=models.CASCADE, related_name="Statuses",
                                verbose_name="Статус")
     types = models.ManyToManyField("webapp.Type", related_name="works", blank=True)

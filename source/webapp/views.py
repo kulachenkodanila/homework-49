@@ -1,3 +1,5 @@
+import types
+
 from django.shortcuts import render, redirect, get_object_or_404
 
 from django.shortcuts import render
@@ -9,7 +11,7 @@ from webapp.forms import WorkForm
 from webapp.models import Work
 
 
-class IndexView(View):
+class IndexView(TemplateView):
     def get(self, request, *args, **kwargs):
         workes = Work.objects.order_by("-updated_at")
         context = {"workes": workes}
@@ -46,11 +48,13 @@ class UpdateWork(View):
     def post(self, request, *args, **kwargs):
         form = WorkForm(data=request.POST)
         if form.is_valid():
+            types = form.cleaned_data.pop('types')
             self.work.summary = form.cleaned_data.get("summary")
             self.work.description = form.cleaned_data.get("description")
             self.work.status = form.cleaned_data.get("status")
             self.work.types.all = form.cleaned_data.get("types")
             self.work.save()
+            self.work.types.set(types)
             return redirect("work_view", pk=self.work.pk)
         return render(request, "update.html", {"form": form})
 
