@@ -1,11 +1,13 @@
 from django import forms
+from django.forms import widgets
+
+from webapp.models import Work
 
 
-from webapp.models import Type, Status
-
-
-class WorkForm(forms.Form):
-    summary = forms.CharField(max_length=150, required=True, label='Summary')
-    description = forms.CharField(max_length=100, required=True, label='Description')
-    status = forms.ModelChoiceField(queryset=Status.objects.all())
-    types = forms.ModelMultipleChoiceField(queryset=Type.objects.all(), label='Типы')
+class WorkForm(forms.ModelForm):
+    class Meta:
+        model = Work
+        fields = ["summary", "description", "status", "types"]
+        widgets = {
+            "types": widgets.CheckboxSelectMultiple
+        }
