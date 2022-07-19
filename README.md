@@ -8,3 +8,8 @@ works = Work.objects.all()
  
  2)
  Work.objects.filter(status__status = 'New').filter(types__type = 'Task')
+
+3)
+w = Work.objects.filter(summary__icontains = 'bug') 
+t = Work.objects.filter(types__type__icontains = 'bug') 
+w | t
