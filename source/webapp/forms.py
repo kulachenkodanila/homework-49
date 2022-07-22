@@ -26,3 +26,7 @@ class WorkForm(forms.ModelForm):
         return summary
 
 
+class SearchForm(forms.Form):
+    search = forms.CharField(max_length=50, required=False, label='Найти')
+
+
