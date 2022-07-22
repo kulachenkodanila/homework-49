@@ -18,7 +18,7 @@ class IndexView(ListView):
     template_name = "index.html"
     context_object_name = "workes"
     ordering = "-updated_at"
-    paginate_by = 4
+    paginate_by = 10
 
     def get(self, request, *args, **kwargs):
         self.form = self.get_search_form()
