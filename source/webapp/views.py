@@ -22,7 +22,7 @@ class IndexView(ListView):
     template_name = "index.html"
     context_object_name = "workes"
     ordering = "-updated_at"
-    paginate_by = 6
+    paginate_by = 4
 
 
 class WorkView(TemplateView):
