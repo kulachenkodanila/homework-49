@@ -260,6 +260,19 @@
     }
 },
 {
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2022-07-19T13:54:49.395Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "19",
+        "object_repr": "19. Задача Bug - New - Задача Bug - webapp.Type.None",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -867,6 +880,20 @@
         "status": 1,
         "types": [
             1
+        ]
+    }
+},
+{
+    "model": "webapp.work",
+    "pk": 19,
+    "fields": {
+        "created_at": "2022-07-19T13:54:47.864Z",
+        "updated_at": "2022-07-19T13:54:47.864Z",
+        "summary": "Задача Bug",
+        "description": "Задача Bug",
+        "status": 1,
+        "types": [
+            2
         ]
     }
 }

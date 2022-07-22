@@ -5,17 +5,24 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.shortcuts import render
 
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 
 from webapp.forms import WorkForm
 from webapp.models import Work
 
 
-class IndexView(TemplateView):
-    def get(self, request, *args, **kwargs):
-        workes = Work.objects.order_by("-updated_at")
-        context = {"workes": workes}
-        return render(request, "index.html", context)
+# class IndexView(TemplateView):
+#     def get(self, request, *args, **kwargs):
+#         workes = Work.objects.order_by("-updated_at")
+#         context = {"workes": workes}
+#         return render(request, "index.html", context)
+
+class IndexView(ListView):
+    model = Work
+    template_name = "index.html"
+    context_object_name = "workes"
+    ordering = "-updated_at"
+    paginate_by = 6
 
 
 class WorkView(TemplateView):
@@ -41,7 +48,7 @@ class UpdateWork(View):
                 "summary": self.work.summary,
                 "description": self.work.description,
                 "status": self.work.status,
-                "types":self.work.types.all
+                "types": self.work.types.all
             })
             return render(request, "update.html", {"form": form})
 
