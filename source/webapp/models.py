@@ -52,7 +52,7 @@ class Work(BaseModel):
         verbose_name = "Задача"
         verbose_name_plural = "Задачи"
 
-class Project(BaseModel):
+class Project(models.Model):
     start_date = models.DateField(verbose_name="Дата начала")
     finish_date = models.DateField(verbose_name="Дата окончания")
     name = models.CharField(max_length=30, verbose_name="Название")
