@@ -4,7 +4,7 @@ from webapp.models import Work, Type, Status, Project
 
 
 class WorkAdmin(admin.ModelAdmin):
-    list_display = ['id', 'summary', 'description', 'status', 'created_at', 'updated_at', 'projects']
+    list_display = ['id', 'summary', 'description', 'status', 'created_at', 'updated_at', 'works']
     list_filter = ['status', 'created_at']
     list_display_links = ['summary']
     search_fields = ['description', 'status', 'types']

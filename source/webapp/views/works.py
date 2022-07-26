@@ -6,55 +6,30 @@ from django.shortcuts import render
 from django.utils.http import urlencode
 
 from django.views import View
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView
 
 from webapp.forms import WorkForm, SearchForm
-from webapp.models import Work
+from webapp.models import Work, Project
 
 
 
-class IndexView(ListView):
-    model = Work
-    template_name = "works/index.html"
-    context_object_name = "workes"
-    ordering = "-updated_at"
-    paginate_by = 10
+# class WorkView(TemplateView):
+#     template_name = "works/work_view.html"
+#
+#     def get_context_data(self, **kwargs):
+#         pk = kwargs.get("pk")
+#         work = get_object_or_404(Work, pk=pk)
+#         kwargs["work"] = work
+#         return super().get_context_data(**kwargs)
 
-    def get(self, request, *args, **kwargs):
-        self.form = self.get_search_form()
-        self.search_value = self.get_search_value()
-        return super().get(request, *args, **kwargs)
-
-    def get_queryset(self):
-        if self.search_value:
-            return Work.objects.filter(Q(summary__icontains=self.search_value))
-        return Work.objects.all()
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(object_list=object_list, **kwargs)
-        context["form"] = self.form
-        if self.search_value:
-            query = urlencode({'search': self.search_value})
-            context['query'] = query
-            context['search'] = self.search_value
-        return context
-
-    def get_search_form(self):
-        return SearchForm(self.request.GET)
-
-    def get_search_value(self):
-        if self.form.is_valid():
-            return self.form.cleaned_data.get("search")
-
-
-class WorkView(TemplateView):
+class WorkView(DetailView):
     template_name = "works/work_view.html"
+    model = Work
 
-    def get_context_data(self, **kwargs):
-        pk = kwargs.get("pk")
-        work = get_object_or_404(Work, pk=pk)
-        kwargs["work"] = work
-        return super().get_context_data(**kwargs)
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['projects'] = self.object.projects.order_by("name")
+    #     return context
 
 
 class UpdateWork(View):
@@ -88,24 +63,16 @@ class UpdateWork(View):
         return render(request, "works/update.html", {"form": form})
 
 
-class CreateWork(View):
-    def get(self, request, *args, **kwargs):
-        if request.method == "GET":
-            form = WorkForm()
-            return render(request, "works/create.html", {"form": form})
 
-    def post(self, request, *args, **kwargs):
-        form = WorkForm(data=request.POST)
-        if form.is_valid():
-            summary = form.cleaned_data.get("summary")
-            description = form.cleaned_data.get("description")
-            status = form.cleaned_data.get("status")
-            types = form.cleaned_data.get("types")
-            new_work = Work.objects.create(summary=summary, description=description, status=status)
-            new_work.types.set(types)
-            return redirect("work_view", pk=new_work.pk)
-        return render(request, "works/create.html", {"form": form})
+class CreateWork(CreateView):
+    form_class = WorkForm
+    template_name = "works/create.html"
 
+    def form_valid(self, form):
+        work = form.save(commit=False)
+        work.save()
+        form.save_m2m()
+        return redirect("work_view", pk=work.pk)
 
 class DeleteWork(View):
 
