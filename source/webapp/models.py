@@ -41,8 +41,6 @@ class Work(BaseModel):
     status = models.ForeignKey("webapp.Status", on_delete=models.CASCADE, related_name="Statuses",
                                verbose_name="Статус")
     types = models.ManyToManyField("webapp.Type", related_name="works", blank=True)
-    # projects = models.ForeignKey("webapp.Project", on_delete=models.CASCADE, default=1, related_name="projects",
-    #                            verbose_name="Проект")
 
     def __str__(self):
         return f"{self.pk}. {self.description} - {self.status} - {self.summary} - {self.types}"
