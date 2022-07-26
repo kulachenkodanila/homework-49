@@ -15,7 +15,7 @@ from webapp.models import Work
 
 class IndexView(ListView):
     model = Work
-    template_name = "index.html"
+    template_name = "works/index.html"
     context_object_name = "workes"
     ordering = "-updated_at"
     paginate_by = 10
@@ -48,7 +48,7 @@ class IndexView(ListView):
 
 
 class WorkView(TemplateView):
-    template_name = "work_view.html"
+    template_name = "works/work_view.html"
 
     def get_context_data(self, **kwargs):
         pk = kwargs.get("pk")
@@ -72,7 +72,7 @@ class UpdateWork(View):
                 "status": self.work.status,
                 "types": self.work.types.all
             })
-            return render(request, "update.html", {"form": form})
+            return render(request, "works/update.html", {"form": form})
 
     def post(self, request, *args, **kwargs):
         form = WorkForm(data=request.POST)
@@ -85,14 +85,14 @@ class UpdateWork(View):
             self.work.save()
             self.work.types.set(types)
             return redirect("work_view", pk=self.work.pk)
-        return render(request, "update.html", {"form": form})
+        return render(request, "works/update.html", {"form": form})
 
 
 class CreateWork(View):
     def get(self, request, *args, **kwargs):
         if request.method == "GET":
             form = WorkForm()
-            return render(request, "create.html", {"form": form})
+            return render(request, "works/create.html", {"form": form})
 
     def post(self, request, *args, **kwargs):
         form = WorkForm(data=request.POST)
@@ -104,7 +104,7 @@ class CreateWork(View):
             new_work = Work.objects.create(summary=summary, description=description, status=status)
             new_work.types.set(types)
             return redirect("work_view", pk=new_work.pk)
-        return render(request, "create.html", {"form": form})
+        return render(request, "works/create.html", {"form": form})
 
 
 class DeleteWork(View):
@@ -116,7 +116,7 @@ class DeleteWork(View):
 
     def get(self, request, *args, **kwargs):
         if request.method == "GET":
-            return render(request, "delete.html", {"work": self.work})
+            return render(request, "works/delete.html", {"work": self.work})
 
     def post(self, request, *args, **kwargs):
         self.work.delete()

@@ -1,5 +1,4 @@
 from django.urls import path
-from django.views.generic import TemplateView, RedirectView
 
 from webapp.views import IndexView, WorkView, UpdateWork, CreateWork, DeleteWork
 
