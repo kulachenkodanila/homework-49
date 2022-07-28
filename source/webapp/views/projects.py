@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.utils.http import urlencode
 
 
-from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from webapp.forms import WorkForm, SearchForm, ProjectForm, UserProjectForm
 from webapp.models import Work, Project
@@ -67,6 +67,16 @@ class UpdateProject(UpdateView):
 
     def get_success_url(self):
         return reverse("project_view", kwargs={"pk": self.object.pk})
+
+
+class DeleteProject(DeleteView):
+    model = Project
+
+    def get(self, request, *args, **kwargs):
+        return super().delete(request, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse("index")
 
 
 

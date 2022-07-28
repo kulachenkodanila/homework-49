@@ -7,7 +7,7 @@
         <a class="nav-link" href="{% url "update_project" project.pk %}">Редактировать проект</a>
     </li>
     <li class="nav-item">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#articleDeleteModal">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projectDeleteModal">
             Удалить
         </button>
     </li>
@@ -48,11 +48,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Вы уверены что хотите удалить проект {{ work.summary }}?
+                    Вы уверены что хотите удалить проект {{ project.name }}?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <form action="#" method="post">
+                    <form action="{% url "delete_project" project.pk %}" method="post">
                         {% csrf_token %}
                         <button type="submit">Да</button>
                     </form>
