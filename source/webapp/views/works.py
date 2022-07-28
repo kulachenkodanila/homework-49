@@ -2,13 +2,13 @@ from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 
 from django.shortcuts import render
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.utils.http import urlencode
 
 from django.views import View
-from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from webapp.forms import WorkForm, SearchForm, UserWorkForm
+from webapp.forms import WorkForm, SearchForm, UserWorkForm, WorkDeleteForm
 from webapp.models import Work, Project
 
 
@@ -35,6 +35,7 @@ class UpdateWork(UpdateView):
     def get_success_url(self):
         return reverse("work_view", kwargs={"pk": self.object.pk})
 
+
 class CreateWork(CreateView):
     form_class = WorkForm
     template_name = "works/create.html"
@@ -46,17 +47,17 @@ class CreateWork(CreateView):
         return redirect("work_view", pk=work.pk)
 
 
-class DeleteWork(View):
-
-    def dispatch(self, request, *args, **kwargs):
-        pk = kwargs.get("pk")
-        self.work = get_object_or_404(Work, pk=pk)
-        return super().dispatch(request, *args, **kwargs)
-
-    def get(self, request, *args, **kwargs):
-        if request.method == "GET":
-            return render(request, "works/delete.html", {"work": self.work})
+class DeleteWork(DeleteView):
+    model = Work
+    template_name = "works/delete.html"
+    success_url = reverse_lazy('index')
+    form_class = WorkDeleteForm
 
     def post(self, request, *args, **kwargs):
-        self.work.delete()
-        return redirect("index")
+        form = self.form_class(data=request.POST, instance=self.get_object())
+        if form.is_valid():
+            return self.delete(request, *args, **kwargs)
+        else:
+            return self.get(request, *args, **kwargs)
+
+

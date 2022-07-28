@@ -55,6 +55,16 @@ class ProjectForm(forms.ModelForm):
             raise ValidationError("Длина наименования должна быть меньше 50 символов")
         return name
 
+class WorkDeleteForm(forms.ModelForm):
+    class Meta:
+        model = Work
+        fields = ["summary"]
+
+    def clean_title(self):
+        summary = self.cleaned_data.get("summary")
+        if self.instance.summary != summary:
+            raise ValidationError("Названия не совпадают")
+        return summary
 
 class SearchForm(forms.Form):
     search = forms.CharField(max_length=50, required=False, label='Найти')

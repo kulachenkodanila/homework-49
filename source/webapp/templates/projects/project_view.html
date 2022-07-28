@@ -29,23 +29,26 @@
     </p>
     <p>Задачи проекта:</p>
     {% for task in project.tasks.all %}
-            <a class="nav-link" href="{% url "work_view" task.pk %}">{{ task.summary }}</a>
+        <p>{{ task.summary }}</p>
+        <a href="{% url "update_work" task.pk %}">Изменить</a>
+        <a href="{% url "delete_work" task.pk %}">Удалить</a>
+        </p>
     {% empty %}
         <p>Нет задач в проекте</p>
     {% endfor %}
     <a href="{% url "index" %}">На главную</a>
 
 
-    <div class="modal fade" id="articleDeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="projectDeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="articleDeleteModal">Modal title</h5>
+                    <h5 class="modal-title" id="projectDeleteModal">Modal title</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Вы уверены что хотите удалить статью {{ work.summary }}?
+                    Вы уверены что хотите удалить проект {{ work.summary }}?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

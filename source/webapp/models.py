@@ -58,8 +58,7 @@ class Project(models.Model):
     description_project = models.TextField(max_length=150, blank=True, verbose_name="Описание")
     start_date = models.DateField(verbose_name="Дата начала")
     finish_date = models.DateField(verbose_name="Дата окончания")
-    # works = models.ForeignKey("webapp.Work", null=True, blank=True, on_delete=models.CASCADE, related_name="works",
-    #                            verbose_name="Задача")
+
 
     def __str__(self):
         return f"{self.pk}. {self.start_date} - {self.name} - {self.description_project}"
