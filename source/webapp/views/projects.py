@@ -1,18 +1,17 @@
-
 from django.db.models import Q
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import redirect
 
-from django.shortcuts import render
+from django.urls import reverse
 from django.utils.http import urlencode
 
-from django.views import View
-from django.views.generic import TemplateView, ListView, DetailView, CreateView
 
-from webapp.forms import WorkForm, SearchForm
+from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView
+
+from webapp.forms import WorkForm, SearchForm, ProjectForm, UserProjectForm
 from webapp.models import Work, Project
 
 
-class IndexView(ListView):
+class IndexView_project(ListView):
     model = Project
     template_name = "projects/project_list.html"
     context_object_name = "projects"
@@ -45,12 +44,30 @@ class IndexView(ListView):
         if self.form.is_valid():
             return self.form.cleaned_data.get("search")
 
+
 class ProjectView(DetailView):
     template_name = "projects/project_view.html"
     model = Project
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tasks'] = self.object.tasks
+        return context
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['projects'] = self.object.projects.order_by("name")
-    #     return context
+
+class UpdateProject(UpdateView):
+    form_class = ProjectForm
+    template_name = "projects/project_update.html"
+    model = Project
+
+    def get_form_class(self):
+        if self.request.GET.get("is_admin"):
+            return ProjectForm
+        return UserProjectForm
+
+    def get_success_url(self):
+        return reverse("project_view", kwargs={"pk": self.object.pk})
+
+
+
+

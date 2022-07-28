@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block nav %}
     <li class="nav-item">
-        <a class="nav-link" href="#">Добавление задачи</a>
+        <a class="nav-link" href="#">Добавление задачи в проект</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">Редактировать</a>
+        <a class="nav-link" href="{% url "update_project" project.pk %}">Редактировать проект</a>
     </li>
     <li class="nav-item">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#articleDeleteModal">
@@ -28,10 +28,10 @@
        Дата сдачи: {{ project.finish_date }}
     </p>
     <p>Задачи проекта:</p>
-    {% for work in project.works.all %}
-            <p>{{ work }}</p>
+    {% for task in project.tasks.all %}
+            <a class="nav-link" href="{% url "work_view" task.pk %}">{{ task.summary }}</a>
     {% empty %}
-        <p>Задачи не добавлены в проект</p>
+        <p>Нет задач в проекте</p>
     {% endfor %}
     <a href="{% url "index" %}">На главную</a>
 

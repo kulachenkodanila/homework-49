@@ -41,6 +41,8 @@ class Work(BaseModel):
     status = models.ForeignKey("webapp.Status", on_delete=models.CASCADE, related_name="Statuses",
                                verbose_name="Статус")
     types = models.ManyToManyField("webapp.Type", related_name="works", blank=True)
+    project = models.ForeignKey("webapp.Project", null=True, blank=True, on_delete=models.CASCADE, related_name="tasks",
+                              verbose_name="Проект")
 
     def __str__(self):
         return f"{self.pk}. {self.description} - {self.status} - {self.summary} - {self.types}"
@@ -51,15 +53,16 @@ class Work(BaseModel):
         verbose_name_plural = "Задачи"
 
 class Project(models.Model):
-    start_date = models.DateField(verbose_name="Дата начала")
-    finish_date = models.DateField(verbose_name="Дата окончания")
+
     name = models.CharField(max_length=30, verbose_name="Название")
     description_project = models.TextField(max_length=150, blank=True, verbose_name="Описание")
-    works = models.ForeignKey("webapp.Work", on_delete=models.CASCADE, default=1, related_name="works",
-                               verbose_name="Задача")
+    start_date = models.DateField(verbose_name="Дата начала")
+    finish_date = models.DateField(verbose_name="Дата окончания")
+    # works = models.ForeignKey("webapp.Work", null=True, blank=True, on_delete=models.CASCADE, related_name="works",
+    #                            verbose_name="Задача")
 
     def __str__(self):
-        return f"{self.pk}. {self.start_date} - {self.finish_date} - {self.name} - {self.description_project}"
+        return f"{self.pk}. {self.start_date} - {self.name} - {self.description_project}"
 
     class Meta:
         db_table = "projects"
