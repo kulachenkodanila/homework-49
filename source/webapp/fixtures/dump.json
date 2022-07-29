@@ -1106,48 +1106,6 @@
 },
 {
     "model": "webapp.work",
-    "pk": 1,
-    "fields": {
-        "created_at": "2022-07-10T22:52:04.688Z",
-        "updated_at": "2022-07-28T18:21:08.785Z",
-        "summary": "Задача 11111",
-        "description": "Задача 1",
-        "status": 2,
-        "project": 1,
-        "types": [
-            1,
-            2
-        ]
-    }
-},
-{
-    "model": "webapp.work",
-    "pk": 3,
-    "fields": {
-        "created_at": "2022-07-10T22:52:39.010Z",
-        "updated_at": "2022-07-28T17:40:35.712Z",
-        "summary": "Задача 3",
-        "description": "Задача 3",
-        "status": 3,
-        "project": 1,
-        "types": []
-    }
-},
-{
-    "model": "webapp.work",
-    "pk": 5,
-    "fields": {
-        "created_at": "2022-07-10T22:53:19.836Z",
-        "updated_at": "2022-07-28T17:40:42.679Z",
-        "summary": "Задача 5",
-        "description": "Задача 5",
-        "status": 3,
-        "project": 4,
-        "types": []
-    }
-},
-{
-    "model": "webapp.work",
     "pk": 6,
     "fields": {
         "created_at": "2022-07-10T22:53:32.018Z",
@@ -1155,7 +1113,7 @@
         "summary": "Задача 6",
         "description": "Задача 6",
         "status": 2,
-        "project": null,
+        "project": 6,
         "types": []
     }
 },
@@ -1168,7 +1126,7 @@
         "summary": "Задача 4",
         "description": "Задача 4",
         "status": 1,
-        "project": null,
+        "project": 2,
         "types": [
             2,
             3
@@ -1184,7 +1142,7 @@
         "summary": "Задача 10",
         "description": "Задача 10",
         "status": 1,
-        "project": null,
+        "project": 2,
         "types": [
             1
         ]
@@ -1199,7 +1157,7 @@
         "summary": "Задача Bug",
         "description": "Задача Bug",
         "status": 1,
-        "project": null,
+        "project": 2,
         "types": [
             2
         ]
@@ -1214,7 +1172,7 @@
         "summary": "Задача 10",
         "description": "Задача 10",
         "status": 1,
-        "project": null,
+        "project": 1,
         "types": [
             2,
             3
@@ -1230,7 +1188,7 @@
         "summary": "Задача 622",
         "description": "вкпыу",
         "status": 1,
-        "project": null,
+        "project": 6,
         "types": [
             1
         ]
@@ -1245,9 +1203,100 @@
         "summary": "sdv",
         "description": "dzv",
         "status": 1,
-        "project": null,
+        "project": 6,
         "types": [
             1
+        ]
+    }
+},
+{
+    "model": "webapp.work",
+    "pk": 23,
+    "fields": {
+        "created_at": "2022-07-29T06:53:16.015Z",
+        "updated_at": "2022-07-29T06:53:16.015Z",
+        "summary": "dddd",
+        "description": "вым",
+        "status": 1,
+        "project": 1,
+        "types": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "webapp.work",
+    "pk": 24,
+    "fields": {
+        "created_at": "2022-07-29T06:58:43.053Z",
+        "updated_at": "2022-07-29T06:58:43.053Z",
+        "summary": "sczsc",
+        "description": "zsczsc",
+        "status": 2,
+        "project": 1,
+        "types": [
+            2
+        ]
+    }
+},
+{
+    "model": "webapp.work",
+    "pk": 25,
+    "fields": {
+        "created_at": "2022-07-29T07:01:01.613Z",
+        "updated_at": "2022-07-29T07:01:01.613Z",
+        "summary": "sczsc",
+        "description": "zsczsc",
+        "status": 2,
+        "project": 6,
+        "types": [
+            2
+        ]
+    }
+},
+{
+    "model": "webapp.work",
+    "pk": 26,
+    "fields": {
+        "created_at": "2022-07-29T07:08:55.765Z",
+        "updated_at": "2022-07-29T07:08:55.765Z",
+        "summary": "Задача 622",
+        "description": "Задача 622",
+        "status": 1,
+        "project": 2,
+        "types": [
+            2
+        ]
+    }
+},
+{
+    "model": "webapp.work",
+    "pk": 27,
+    "fields": {
+        "created_at": "2022-07-29T07:09:05.168Z",
+        "updated_at": "2022-07-29T07:09:05.168Z",
+        "summary": "Задача 4",
+        "description": "Задача 622",
+        "status": 2,
+        "project": 2,
+        "types": [
+            2
+        ]
+    }
+},
+{
+    "model": "webapp.work",
+    "pk": 28,
+    "fields": {
+        "created_at": "2022-07-29T07:12:05.469Z",
+        "updated_at": "2022-07-29T07:12:05.469Z",
+        "summary": "Задача 622",
+        "description": "Задача 3",
+        "status": 1,
+        "project": 1,
+        "types": [
+            2
         ]
     }
 },
@@ -1273,22 +1322,22 @@
 },
 {
     "model": "webapp.project",
-    "pk": 3,
-    "fields": {
-        "name": "Project3",
-        "description_project": "Project3",
-        "start_date": "2022-07-25",
-        "finish_date": "2022-08-31"
-    }
-},
-{
-    "model": "webapp.project",
     "pk": 4,
     "fields": {
         "name": "Project4",
         "description_project": "Project4",
         "start_date": "2022-07-25",
         "finish_date": "2022-09-30"
+    }
+},
+{
+    "model": "webapp.project",
+    "pk": 6,
+    "fields": {
+        "name": "Project5",
+        "description_project": "Project5",
+        "start_date": "2022-07-29",
+        "finish_date": "2022-08-07"
     }
 }
 ]
