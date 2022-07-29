@@ -1,11 +1,9 @@
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 
-from django.shortcuts import render
-from django.urls import reverse, reverse_lazy
-from django.utils.http import urlencode
 
-from django.views import View
+from django.urls import reverse, reverse_lazy
+
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from webapp.forms import WorkForm, SearchForm, UserWorkForm, WorkDeleteForm
@@ -36,15 +34,7 @@ class UpdateWork(UpdateView):
         return reverse("work_view", kwargs={"pk": self.object.pk})
 
 
-class CreateWork(CreateView):
-    form_class = WorkForm
-    template_name = "works/create.html"
 
-    def form_valid(self, form):
-        work = form.save(commit=False)
-        work.save()
-        form.save_m2m()
-        return redirect("work_view", pk=work.pk)
 
 
 class DeleteWork(DeleteView):
@@ -59,5 +49,18 @@ class DeleteWork(DeleteView):
             return self.delete(request, *args, **kwargs)
         else:
             return self.get(request, *args, **kwargs)
+
+
+class CreateWork(CreateView):
+    form_class = WorkForm
+    template_name = "works/create.html"
+
+    def form_valid(self, form):
+        work = get_object_or_404(Work, pk=self.kwargs.get("pk"))
+        form.instance.work = work
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse("project_view", kwargs={"pk": self.object.work.pk})
 
 

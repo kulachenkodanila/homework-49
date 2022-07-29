@@ -1,9 +1,8 @@
 from django.db.models import Q
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 
 from django.urls import reverse
 from django.utils.http import urlencode
-
 
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 
@@ -79,5 +78,12 @@ class DeleteProject(DeleteView):
         return reverse("index")
 
 
+class CreateProject(CreateView):
+    form_class = ProjectForm
+    template_name = "projects/project_create.html"
 
-
+    def form_valid(self, form):
+        project = form.save(commit=False)
+        project.save()
+        form.save_m2m()
+        return redirect("project_view", pk=project.pk)

@@ -1,6 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from django.forms import widgets
+from django.forms import widgets, DateInput
 
 from webapp.models import Work, Project
 
@@ -8,7 +8,7 @@ from webapp.models import Work, Project
 class WorkForm(forms.ModelForm):
     class Meta:
         model = Work
-        fields = ["summary", "description", "status", "types", "project"]
+        fields = ["summary", "description", "status", "types"]
         widgets = {
             "types": widgets.CheckboxSelectMultiple
         }
@@ -20,7 +20,7 @@ class WorkForm(forms.ModelForm):
         return description
 
     def clean_summary(self):
-        summary = self.cleaned_data.get('description')
+        summary = self.cleaned_data.get('summary')
         if len(summary) > 100:
             raise ValidationError("Длина заголовка должна быть меньше 100 символов")
         return summary
@@ -41,7 +41,11 @@ class UserProjectForm(forms.ModelForm):
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        fields = ["name", "description_project"]
+        fields = ["name", "description_project", "start_date", "finish_date"]
+        widgets = {
+            "start_date": DateInput(attrs={'type': 'date'}),
+            "finish_date": DateInput(attrs={'type': 'date'})
+        }
 
     def clean_description_project(self):
         description_project = self.cleaned_data.get('description_project')

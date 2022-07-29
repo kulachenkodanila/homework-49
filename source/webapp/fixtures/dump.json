@@ -364,6 +364,175 @@
     }
 },
 {
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2022-07-25T22:09:50.207Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "20",
+        "object_repr": "20. Задача 10 - New - Задача 10 - webapp.Type.None",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2022-07-26T21:14:40.565Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "4",
+        "object_repr": "4. 2022-07-25 - 2022-09-30 - Project4 - Project4",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0417\\u0430\\u0434\\u0430\\u0447\\u0430\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+        "action_time": "2022-07-26T21:14:49.679Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "1",
+        "object_repr": "1. 2022-07-25 - 2022-07-29 - Project1 - Project1",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+        "action_time": "2022-07-26T21:14:58.202Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "1",
+        "object_repr": "1. 2022-07-25 - 2022-07-29 - Project1 - Project1",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0417\\u0430\\u0434\\u0430\\u0447\\u0430\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+        "action_time": "2022-07-27T19:11:12.287Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "3",
+        "object_repr": "3. 2022-07-25 - 2022-08-31 - Project3 - Project3",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0417\\u0430\\u0434\\u0430\\u0447\\u0430\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+        "action_time": "2022-07-27T19:11:21.246Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "1",
+        "object_repr": "1. 2022-07-25 - 2022-07-29 - Project1 - Project1",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0417\\u0430\\u0434\\u0430\\u0447\\u0430\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+        "action_time": "2022-07-27T19:16:48.584Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "6",
+        "object_repr": "6. Задача 6 - In Progress - Задача 6 - webapp.Type.None",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Project\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+        "action_time": "2022-07-27T19:20:02.569Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "3",
+        "object_repr": "3. 2022-07-25 - 2022-08-31 - Project3 - Project3 - 2. Задача 2 - In Progress - Задача 2 - webapp.Type.None",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0417\\u0430\\u0434\\u0430\\u0447\\u0430\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+        "action_time": "2022-07-27T20:27:31.332Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "3",
+        "object_repr": "3. 2022-07-25 - Project3 - Project3",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0417\\u0430\\u0434\\u0430\\u0447\\u0430\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+        "action_time": "2022-07-28T17:33:02.089Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "1",
+        "object_repr": "1. Задача 1 - New - Задача 1 - webapp.Type.None",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u0440\\u043e\\u0435\\u043a\\u0442\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+        "action_time": "2022-07-28T17:33:15.837Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "2",
+        "object_repr": "2. Задача 2 - In Progress - Задача 2 - webapp.Type.None",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u0440\\u043e\\u0435\\u043a\\u0442\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+        "action_time": "2022-07-28T17:40:35.720Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "3",
+        "object_repr": "3. Задача 3 - Done - Задача 3 - webapp.Type.None",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u0440\\u043e\\u0435\\u043a\\u0442\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+        "action_time": "2022-07-28T17:40:42.685Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "5",
+        "object_repr": "5. Задача 5 - Done - Задача 5 - webapp.Type.None",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u0440\\u043e\\u0435\\u043a\\u0442\"]}}]"
+    }
+},
+{
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -940,26 +1109,14 @@
     "pk": 1,
     "fields": {
         "created_at": "2022-07-10T22:52:04.688Z",
-        "updated_at": null,
-        "summary": "Задача 1",
+        "updated_at": "2022-07-28T18:21:08.785Z",
+        "summary": "Задача 11111",
         "description": "Задача 1",
-        "status": 1,
-        "projects": 1,
-        "types": []
-    }
-},
-{
-    "model": "webapp.work",
-    "pk": 2,
-    "fields": {
-        "created_at": "2022-07-10T22:52:26.057Z",
-        "updated_at": null,
-        "summary": "Задача 2",
-        "description": "Задача 2",
         "status": 2,
-        "projects": 1,
+        "project": 1,
         "types": [
-            1
+            1,
+            2
         ]
     }
 },
@@ -968,11 +1125,11 @@
     "pk": 3,
     "fields": {
         "created_at": "2022-07-10T22:52:39.010Z",
-        "updated_at": null,
+        "updated_at": "2022-07-28T17:40:35.712Z",
         "summary": "Задача 3",
         "description": "Задача 3",
         "status": 3,
-        "projects": 1,
+        "project": 1,
         "types": []
     }
 },
@@ -981,11 +1138,11 @@
     "pk": 5,
     "fields": {
         "created_at": "2022-07-10T22:53:19.836Z",
-        "updated_at": null,
+        "updated_at": "2022-07-28T17:40:42.679Z",
         "summary": "Задача 5",
         "description": "Задача 5",
         "status": 3,
-        "projects": 1,
+        "project": 4,
         "types": []
     }
 },
@@ -994,11 +1151,11 @@
     "pk": 6,
     "fields": {
         "created_at": "2022-07-10T22:53:32.018Z",
-        "updated_at": "2022-07-19T08:21:37.060Z",
+        "updated_at": "2022-07-27T19:16:48.283Z",
         "summary": "Задача 6",
         "description": "Задача 6",
         "status": 2,
-        "projects": 1,
+        "project": null,
         "types": []
     }
 },
@@ -1011,7 +1168,7 @@
         "summary": "Задача 4",
         "description": "Задача 4",
         "status": 1,
-        "projects": 1,
+        "project": null,
         "types": [
             2,
             3
@@ -1027,7 +1184,7 @@
         "summary": "Задача 10",
         "description": "Задача 10",
         "status": 1,
-        "projects": 4,
+        "project": null,
         "types": [
             1
         ]
@@ -1042,9 +1199,55 @@
         "summary": "Задача Bug",
         "description": "Задача Bug",
         "status": 1,
-        "projects": 1,
+        "project": null,
         "types": [
             2
+        ]
+    }
+},
+{
+    "model": "webapp.work",
+    "pk": 20,
+    "fields": {
+        "created_at": "2022-07-25T22:09:50.197Z",
+        "updated_at": "2022-07-25T22:09:50.198Z",
+        "summary": "Задача 10",
+        "description": "Задача 10",
+        "status": 1,
+        "project": null,
+        "types": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "webapp.work",
+    "pk": 21,
+    "fields": {
+        "created_at": "2022-07-28T20:14:06.853Z",
+        "updated_at": "2022-07-28T20:14:06.854Z",
+        "summary": "Задача 622",
+        "description": "вкпыу",
+        "status": 1,
+        "project": null,
+        "types": [
+            1
+        ]
+    }
+},
+{
+    "model": "webapp.work",
+    "pk": 22,
+    "fields": {
+        "created_at": "2022-07-28T20:14:28.627Z",
+        "updated_at": "2022-07-28T20:14:28.627Z",
+        "summary": "sdv",
+        "description": "dzv",
+        "status": 1,
+        "project": null,
+        "types": [
+            1
         ]
     }
 },
@@ -1052,50 +1255,40 @@
     "model": "webapp.project",
     "pk": 1,
     "fields": {
+        "name": "Project12",
+        "description_project": "Project1",
         "start_date": "2022-07-25",
-        "finish_date": "2022-07-29",
-        "name": "Project1",
-        "description_project": "Project1"
+        "finish_date": "2022-07-29"
     }
 },
 {
     "model": "webapp.project",
     "pk": 2,
     "fields": {
+        "name": "Project2222",
+        "description_project": "Project2",
         "start_date": "2022-07-25",
-        "finish_date": "2022-07-31",
-        "name": "Project2",
-        "description_project": "Project2"
+        "finish_date": "2022-07-31"
     }
 },
 {
     "model": "webapp.project",
     "pk": 3,
     "fields": {
-        "start_date": "2022-07-25",
-        "finish_date": "2022-08-31",
         "name": "Project3",
-        "description_project": "Project3"
+        "description_project": "Project3",
+        "start_date": "2022-07-25",
+        "finish_date": "2022-08-31"
     }
 },
 {
     "model": "webapp.project",
     "pk": 4,
     "fields": {
-        "start_date": "2022-07-25",
-        "finish_date": "2022-09-30",
         "name": "Project4",
-        "description_project": "Project4"
-    }
-},
-{
-    "model": "webapp.project",
-    "pk": 5,
-    "fields": {
+        "description_project": "Project4",
         "start_date": "2022-07-25",
-        "finish_date": "2022-11-30",
-        "name": "Project5",
-        "description_project": "Project5"
+        "finish_date": "2022-09-30"
     }
 }
 ]
