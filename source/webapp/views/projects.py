@@ -1,13 +1,13 @@
 from django.db.models import Q
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import redirect
 
 from django.urls import reverse
 from django.utils.http import urlencode
 
-from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import  ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from webapp.forms import WorkForm, SearchForm, ProjectForm, UserProjectForm
-from webapp.models import Work, Project
+from webapp.forms import  SearchForm, ProjectForm, UserProjectForm
+from webapp.models import  Project
 
 
 class IndexView_project(ListView):
