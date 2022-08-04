@@ -1,4 +1,5 @@
-from django.shortcuts import get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404, redirect
 
 from django.urls import reverse, reverse_lazy
 
@@ -29,24 +30,23 @@ class UpdateWork(UpdateView):
         return UserWorkForm
 
     def get_success_url(self):
-        return reverse("work_view", kwargs={"pk": self.object.pk})
+        return reverse("webapp:work_view", kwargs={"pk": self.object.pk})
 
 
 class DeleteWork(DeleteView):
     model = Work
     template_name = "works/delete.html"
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('webapp:index')
     form_class = WorkDeleteForm
 
-    def post(self, request, *args, **kwargs):
-        form = self.form_class(data=request.POST, instance=self.get_object())
-        if form.is_valid():
-            return self.delete(request, *args, **kwargs)
-        else:
-            return self.get(request, *args, **kwargs)
+    def get(self, request, *args, **kwargs):
+        return super().delete(request, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse("webapp:project_view", kwargs={"pk": self.object.project.pk})
 
 
-class CreateWork(CreateView):
+class CreateWork(LoginRequiredMixin, CreateView):
     form_class = WorkForm
     template_name = "works/create.html"
 
@@ -56,4 +56,5 @@ class CreateWork(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse("project_view", kwargs={"pk": self.object.project.pk})
+        return reverse("webapp:project_view", kwargs={"pk": self.object.project.pk})
+

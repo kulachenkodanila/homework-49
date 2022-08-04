@@ -1,13 +1,14 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.shortcuts import redirect
 
 from django.urls import reverse
 from django.utils.http import urlencode
 
-from django.views.generic import  ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from webapp.forms import  SearchForm, ProjectForm, UserProjectForm
-from webapp.models import  Project
+from webapp.forms import SearchForm, ProjectForm, UserProjectForm
+from webapp.models import Project
 
 
 class IndexView_project(ListView):
@@ -65,7 +66,7 @@ class UpdateProject(UpdateView):
         return UserProjectForm
 
     def get_success_url(self):
-        return reverse("project_view", kwargs={"pk": self.object.pk})
+        return reverse("webapp:project_view", kwargs={"pk": self.object.pk})
 
 
 class DeleteProject(DeleteView):
@@ -75,15 +76,11 @@ class DeleteProject(DeleteView):
         return super().delete(request, *args, **kwargs)
 
     def get_success_url(self):
-        return reverse("index")
+        return reverse("webapp:index")
 
 
-class CreateProject(CreateView):
+class CreateProject(LoginRequiredMixin, CreateView):
     form_class = ProjectForm
     template_name = "projects/project_create.html"
 
-    def form_valid(self, form):
-        project = form.save(commit=False)
-        project.save()
-        form.save_m2m()
-        return redirect("project_view", pk=project.pk)
+

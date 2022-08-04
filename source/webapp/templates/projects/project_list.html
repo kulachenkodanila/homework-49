@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 {% block nav %}
-    <li class="nav-item">
-        <a class="nav-link" href="{% url "create_project" %}">Создание проекта</a>
-    </li>
+    {% if request.user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url "webapp:create_project" %}">Создание проекта</a>
+        </li>
+    {% endif %}
 {% endblock %}
 {% block content %}
     {% include "partial/search.html" %}
@@ -14,13 +16,13 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{ project.name }}</h5>
-                        <a href="{% url "project_view" project.pk %}" class="card-link">О проекте</a>
+                        <a href="{% url "webapp:project_view" project.pk %}" class="card-link">О проекте</a>
                     </div>
                 </div>
             </div>
         {% endfor %}
-    {% if is_paginated %}
-        {% include "partial/pagination.html" %}
-    {% endif %}
+        {% if is_paginated %}
+            {% include "partial/pagination.html" %}
+        {% endif %}
     </div>
 {% endblock %}

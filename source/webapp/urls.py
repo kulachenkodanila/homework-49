@@ -3,6 +3,8 @@ from django.urls import path
 from webapp.views import WorkView, CreateWork, DeleteWork, UpdateWork
 from webapp.views.projects import ProjectView, IndexView_project, UpdateProject, DeleteProject, CreateProject
 
+app_name = "webapp"
+
 urlpatterns = [
     path('', IndexView_project.as_view(), name="index"),
     path('project/<int:pk>/', ProjectView.as_view(), name="project_view"),

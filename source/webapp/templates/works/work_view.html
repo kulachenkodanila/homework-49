@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block nav %}
     <li class="nav-item">
-        <a class="nav-link" href="{% url "update_work" work.pk %}">Редактировать</a>
+        <a class="nav-link" href="{% url "webapp:update_work" work.pk %}">Редактировать</a>
     </li>
 
 {% endblock %}
@@ -23,7 +23,7 @@
     {% empty %}
         <p>Типы не выбраны</p>
     {% endfor %}
-    <a href="{% url "index" %}">На главную</a>
+    <a href="{% url "webapp:index" %}">На главную</a>
 
 
     <div class="modal fade" id="workDeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -39,7 +39,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <form action="{% url "delete_work" work.pk %}" method="post">
+                    <form action="{% url "webapp:delete_work" work.pk %}" method="post">
                         {% csrf_token %}
                         <button type="submit">Да</button>
                     </form>
