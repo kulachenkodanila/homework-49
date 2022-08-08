@@ -5,7 +5,7 @@
 
     <h1>Вход</h1>
     <div class="text-center">
-        <form action="{% url 'accounts:login' %}" method="post" class="w-50 ms-auto me-auto">
+        <form method="post" class="w-50 ms-auto me-auto">
             {% csrf_token %}
             {% if has_error %}
                 <p class="form-error">Неверное имя пользователя или пароль.</p>
