@@ -17,6 +17,12 @@
 
 {% block content %}
     {{ test }}
+    <p>Пользователи:</p>
+    {% for user in project.users.all %}
+        <p>{{ user }}</p>
+        </p>
+    {% endfor %}
+
     <p>
         Название проекта: {{ project.name }}
     </p>
@@ -40,6 +46,7 @@
     {% empty %}
         <p>Нет задач в проекте</p>
     {% endfor %}
+
     <a href="{% url "webapp:index" %}">На главную</a>
 
 

@@ -26,6 +26,14 @@ class RegisterView(CreateView):
             next_url = reverse('webapp:index')
         return next_url
 
+    def clean(self):
+        form = form_class()
+        first_name = self.cleaned_data.get('first_name')
+        last_name = self.cleaned_data.get('last_name')
+        if not first_name and last_name:
+            raise ValidationError("Укажите имя или фамилию")
+        # return self.cleaned_data
+
 
 
 def login_view(request):

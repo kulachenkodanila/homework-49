@@ -1,6 +1,7 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.db.models import Q
-from django.shortcuts import redirect
+from django.http import request
+from django.shortcuts import redirect, get_object_or_404
 
 from django.urls import reverse
 from django.utils.http import urlencode
@@ -55,10 +56,11 @@ class ProjectView(DetailView):
         return context
 
 
-class UpdateProject(UpdateView):
+class UpdateProject(PermissionRequiredMixin, UpdateView):
     form_class = ProjectForm
     template_name = "projects/project_update.html"
     model = Project
+
 
     def get_form_class(self):
         if self.request.GET.get("is_admin"):
@@ -79,8 +81,11 @@ class DeleteProject(DeleteView):
         return reverse("webapp:index")
 
 
-class CreateProject(LoginRequiredMixin, CreateView):
+class CreateProject(LoginRequiredMixin , CreateView):
     form_class = ProjectForm
     template_name = "projects/project_create.html"
 
+
+    def get_success_url(self):
+        return reverse("webapp:project_view", kwargs={"pk": self.object.pk})
 

@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import request
 from django.shortcuts import get_object_or_404, redirect
 
 from django.urls import reverse, reverse_lazy
@@ -23,6 +24,10 @@ class UpdateWork(UpdateView):
     form_class = WorkForm
     template_name = "works/update.html"
     model = Work
+    permission_required = 'webapp.update_project'
+
+    def has_permission(self):
+        return super().has_permission() or self.get_object().user == self.request.user
 
     def get_form_class(self):
         if self.request.GET.get("is_admin"):
@@ -38,6 +43,10 @@ class DeleteWork(DeleteView):
     template_name = "works/delete.html"
     success_url = reverse_lazy('webapp:index')
     form_class = WorkDeleteForm
+    permission_required = 'webapp.delete_project'
+
+    def has_permission(self):
+        return super().has_permission() or self.get_object().user == self.request.user
 
     def get(self, request, *args, **kwargs):
         return super().delete(request, *args, **kwargs)
@@ -50,11 +59,12 @@ class CreateWork(LoginRequiredMixin, CreateView):
     form_class = WorkForm
     template_name = "works/create.html"
 
+
     def form_valid(self, form):
         project = get_object_or_404(Project, pk=self.kwargs.get("pk"))
         form.instance.project = project
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse("webapp:project_view", kwargs={"pk": self.object.project.pk})
+        return reverse("webapp:work_view", kwargs={"pk": self.object.pk})
 

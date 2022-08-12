@@ -54,7 +54,7 @@ class Work(BaseModel):
         verbose_name_plural = "Задачи"
 
 class Project(models.Model):
-    user = models.ManyToManyField(get_user_model(), related_name="projects", verbose_name="Пользователь")
+    user = models.ManyToManyField(get_user_model(), related_name="users", verbose_name="Пользователь")
     name = models.CharField(max_length=30, verbose_name="Название")
     description_project = models.TextField(max_length=150, blank=True, verbose_name="Описание")
     start_date = models.DateField(verbose_name="Дата начала")
