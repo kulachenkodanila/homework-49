@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Профиль{% endblock %}
+{% block content %}
+    <div class="card flex-row mt-3">
+        {% if user.profile.avatar %}
+            <img src="{{ user.profile.avatar.url }}" class="card-img-top w-25" alt="...">
+        {% endif %}
+        <div class="card-body ms-5">
+            <h5 class="card-title">Имя пользователя: {{ user.username }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Имя: {{ user.first_name }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Фамилия: {{ user.last_name }}</h6>
+            {% if user.profile.about_user %}
+                <h6 class="card-subtitle mb-2 text-muted">О пользователе: {{ user.profile.about_user }}</h6>
+            {% endif %}
+            <h6 class="card-subtitle mb-2 text-muted">Почта: {{ user.email }}</h6>
+            {% if user.profile.profile_git %}
+                <h6 class="card-subtitle mb-2 text-muted">GitHub: <a href="{{ user.profile.profile_git }}">Перейти на GitHub</a></h6>
+            {% endif %}
+        </div>
+    </div>
+{#    {% include "partial/articles_list_partial.html" %}#}
+
+{% endblock %}

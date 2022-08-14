@@ -1,11 +1,13 @@
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout, authenticate, get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.shortcuts import redirect, render
 from django.urls import reverse
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 
 from accounts.forms import MyUserCreationForm
+from accounts.models import Profile
 
 
 class RegisterView(CreateView):
@@ -15,6 +17,7 @@ class RegisterView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
+        Profile.objects.create(user = user)
         login(self.request, user)
         return redirect(self.get_success_url())
 
@@ -53,3 +56,9 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('webapp:index')
+
+
+class ProfileView(LoginRequiredMixin, DetailView):
+    model = get_user_model()
+    template_name = "profile.html"
+
