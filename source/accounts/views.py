@@ -1,14 +1,14 @@
 from django.contrib.auth import login, logout, authenticate, get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.views import PasswordChangeView
 from django.core.exceptions import ValidationError
 from django.core.paginator import Paginator
 from django.shortcuts import redirect, render
 from django.urls import reverse
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, UpdateView
 
 from accounts.forms import MyUserCreationForm, UserChangeForm, ProfileChangeForm
 from accounts.models import Profile
-from webapp.views.base_view import UpdateView
 
 User = get_user_model()
 
@@ -106,3 +106,11 @@ class ChangeProfileView(PermissionRequiredMixin, UpdateView):
 
     def form_invalid(self, form, profile_form):
         return self.render_to_response(self.get_context_data(form=form, profile_form=profile_form))
+
+
+class ChangePasswordView(PasswordChangeView):
+    template_name = "change_password.html"
+
+    def get_success_url(self):
+        return reverse("accounts:profile", kwargs={"pk": self.request.user.pk})
+
