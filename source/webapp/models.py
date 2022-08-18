@@ -1,7 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-
-
+from django.urls import reverse
 
 
 class BaseModel(models.Model):
@@ -43,7 +42,7 @@ class Work(BaseModel):
                                verbose_name="Статус")
     types = models.ManyToManyField("webapp.Type", related_name="works", blank=True)
     project = models.ForeignKey("webapp.Project", null=True, blank=True, on_delete=models.CASCADE, related_name="tasks",
-                              verbose_name="Проект")
+                                verbose_name="Проект")
 
     def __str__(self):
         return f"{self.pk}. {self.description} - {self.status} - {self.summary} - {self.types}"
@@ -53,20 +52,27 @@ class Work(BaseModel):
         verbose_name = "Задача"
         verbose_name_plural = "Задачи"
 
+
 class Project(models.Model):
-    user = models.ManyToManyField(get_user_model(), related_name="users", verbose_name="Пользователь")
+    users = models.ManyToManyField(get_user_model(), related_name="projects", verbose_name="Пользователь")
     name = models.CharField(max_length=30, verbose_name="Название")
     description_project = models.TextField(max_length=150, blank=True, verbose_name="Описание")
     start_date = models.DateField(verbose_name="Дата начала")
     finish_date = models.DateField(verbose_name="Дата окончания")
 
-
     def __str__(self):
         return f"{self.pk}. {self.user} {self.start_date} - {self.name} - {self.description_project}"
+
+    def get_absolute_url(self):
+        return reverse("webapp:project_view", kwargs={"pk": self.pk})
+
+    def upper(self):
+        return self.name.upper()
 
     class Meta:
         db_table = "projects"
         verbose_name = "Проект"
         verbose_name_plural = "Проекты"
+        permissions = [('add_users_in_project', 'Добавление пользователей в проект')]
 
 # Create your models here.

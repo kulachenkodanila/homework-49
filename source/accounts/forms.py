@@ -1,24 +1,24 @@
 from django.contrib.auth.forms import UserCreationForm
-from django.core.exceptions import ValidationError
 from django import forms
+from django.contrib.auth import get_user_model
+
+from accounts.models import Profile
 
 
 class MyUserCreationForm(UserCreationForm):
-    # email = forms.EmailField(label='Email', required=True, widget=forms.EmailInput)
-    form_class = UserCreationForm
-    # class MyForm(forms.Form):
-    #     first_name = forms.CharField(label='first_name', required=False)
-    #     last_name = forms.CharField(label='last_name', required=False)
-
-    # def clean(self):
-    #     form = form_class
-    #     first_name = self.cleaned_data.get('first_name')
-    #     last_name = self.cleaned_data.get('last_name')
-    #     if not first_name and last_name:
-    #         raise ValidationError("Укажите имя или фамилию")
-    #     # return self.cleaned_data
-
-
     class Meta(UserCreationForm.Meta):
         fields = ['username', 'password1', 'password2', 'first_name', 'last_name', 'email']
 
+
+
+class UserChangeForm(forms.ModelForm):
+    class Meta:
+        model = get_user_model()
+        fields = ['first_name', 'last_name', 'email']
+        # labels = {'first_name': 'Имя', 'last_name': 'Фамилия', 'email': 'Email'}
+
+
+class ProfileChangeForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['avatar', 'profile_git', 'about_user']

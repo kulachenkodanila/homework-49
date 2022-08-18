@@ -16,6 +16,8 @@ class UpdateView(View):
        context = self.get_context_data(form=form)
        return render(request, self.template_name, context=context)
 
+
+
    def post(self, request, *args, **kwargs):
        self.object = self.get_object()
        form = self.form_class(instance=self.object, data=request.POST)
@@ -23,6 +25,7 @@ class UpdateView(View):
            return self.form_valid(form)
        else:
            return self.form_invalid(form)
+
 
    def form_valid(self, form):
        self.object = form.save()
@@ -36,10 +39,10 @@ class UpdateView(View):
        pk = self.kwargs.get(self.key_kwarg)
        return get_object_or_404(self.model, pk=pk)
 
-   def get_context_data(self, **my_kwargs):
+   def get_context_data(self, **kwargs):
        context = self.kwargs.copy()
        context[self.context_key] = self.object
-       context.update(my_kwargs)
+       context.update(kwargs)
        return context
 
    def get_redirect_url(self):

@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 
 {% block title %}Профиль{% endblock %}
+{% block nav %}
+{#    {% if user_obj == user %}#}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:change_profile' user.pk %}">Редактировать</a>
+        </li>
+{#        <li class="nav-item">#}
+{#            <a class="nav-link" href="{% url 'accounts:change_password' %}">Сменить пароль</a>#}
+{#        </li>#}
+{#    {% endif %}#}
+{% endblock %}
 {% block content %}
     <div class="card flex-row mt-3">
         {% if user.profile.avatar %}
@@ -19,6 +29,6 @@
             {% endif %}
         </div>
     </div>
-{#    {% include "partial/articles_list_partial.html" %}#}
+    {% include "partial/project_list_partial.html" %}
 
 {% endblock %}
